@@ -1,0 +1,162 @@
+<div class="container">
+    <div class="jumbotron mt-5">
+        <div class="col-sm 8 mx-auto">
+            <h1 class="text-center">PROFILE</h1>
+        </div>
+        <h1>Hola bienvenidos</h1>
+
+        <table>
+
+           
+        </table>
+    </div>
+</div>
+
+<form [formGroup]="orderForm">
+
+
+  <mat-form-field>
+    <mat-label>Seleccionar Persona</mat-label>
+    <select matNativeControl [(ngModel)]="order.id_persona" formControlName="id_persona" name="id_persona" required>
+
+      <option value="true" selected disabled>Seleccione Persona</option>
+      <option *ngFor="let client of clients" value={{client.id}} >{{client.documento}} - {{client.nombre}}</option>
+
+    </select>
+    
+
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Fecha Pedido</mat-label>
+    <input [(ngModel)]="order.fecha_pedido" formControlName="fecha_pedido" name="fecha_pedido" id="fecha_pedido" type="text" matInput placeholder="Ingrese Fecha Pedido">
+    
+  </mat-form-field>
+
+
+    <mat-form-field>
+        <mat-label>Comentario</mat-label>
+        <input [(ngModel)]="order.comentario" formControlName="comentario" name="comentario" id="comentario" type="string" matInput placeholder="Ingrese Comentario">
+        <mat-error *ngIf="comentario.invalid && (comentario.dirty || comentario.touched)">
+          <mat-error *ngIf="comentario.errors.required">
+            comentario Requerido
+          </mat-error>
+          </mat-error>
+      </mat-form-field>
+
+     
+
+
+
+      <div class="panel-body" style="text-align: -webkit-center;">  
+        <div formArrayName="productos" *ngFor="let data of productos;let i= index" class="alert alert-info" style="width: 50%;">  
+          {{data.Value}}  
+         
+          <a  (click)="DeleteItem(i)" style="float: right;">  
+            <span class="glyphicon glyphicon-remove">eliminar</span>  
+          </a>  
+          
+        </div>  
+        <div *ngIf="productos.length == 0" class="alert alert-info" style="width: 50%;">  
+          Items Are Empty !!!  
+        </div>  
+      </div>  
+    
+    
+    <!-- This is panel footer -->      
+    <div class="panel-footer">      
+        <div class="form-group">      
+          <!-- Form that gets user input -->      
+          <form name="itemForm">      
+            <input id="Value" name="Value" required [(ngModel)]="newItem.Value" minlength="3" maxlength="10" style="width: 50%;" placeholder="Enter Any Item"      
+              class="form-control">      
+          </form>      
+          <br>      
+          <!-- Add button to add record -->      
+          <button type="submit" (click)="AddItem()" [disabled]="IsForUpdate == true" class="btn btn-default">Add</button>      
+          <!-- Update button to submit updated value -->      
+          <!-- Update button to submit updated value -->    
+        </div>      
+      </div>        
+    
+    <button (click)="submit()">Registrar</button>
+
+  </form>
+
+
+<!--
+   <div class="form-group">
+    <a class="btn btn-primary" (click)="agregarTelefono()">Agregar Teléfono</a>
+  </div>
+
+  <div formArrayName="productos" *ngFor="let telefono of productos.controls; let i = index">
+    <div [formGroupName]="i">
+      <div class="form-group row">
+        <label class="col-md-1" [attr.for]="'id' + i">Teléfono</label>
+        <div class="col-md-3">
+          <input type="text" [attr.id]="'id' + i" class="form-control" formControlName="id">
+        </div>
+        
+       
+        <div class="col-md-2">
+          <button class="btn btn-danger" (click)="removerTelefono(i)">Remover</button>
+        </div>
+      </div>
+    </div>
+      </div>
+
+
+
+       <div class="panel-body" style="text-align: -webkit-center;">  
+        <div formArrayName="productos" *ngFor="let data of myItems;let i= index" class="alert alert-info" style="width: 50%;"> 
+          <div [formGroupName]="i">
+            <div class="form-group row">
+              <label class="col-md-1" [attr.for]="'id' + i">Teléfono</label>
+              <div class="col-md-3">
+                <input value= {{data.Value}}  type="text" [attr.id]="'id' + i" class="form-control" formControlName="id">
+              </div>
+              </div>
+              </div>
+              
+          {{data.Value}}  
+
+
+          <a  (click)="DeleteItem(i)" style="float: right;">  
+            <span class="glyphicon glyphicon-remove">eliminar</span>  
+          </a>  
+         
+        </div>  
+        <div *ngIf="myItems.length == 0" class="alert alert-info" style="width: 50%;">  
+          Items Are Empty !!!  
+        </div>  
+      </div>  
+    
+    
+       
+    <div class="panel-footer">      
+      <div class="form-group">      
+          
+        <form >      
+          <mat-form-field>
+              <mat-label>Seleccionar Producto</mat-label>
+              <select matNativeControl id="Value" name="Value" required [(ngModel)]="newItem.Value" minlength="3" maxlength="10" style="width: 50%;" placeholder="Enter Any Item">
+          
+                <option value="true" selected disabled>Seleccione Persona</option>
+                <option *ngFor="let product of products" value={{product.id}} >{{product.referencia}} - {{product.nombre_producto}}</option>
+          
+              </select>
+            
+          
+            </mat-form-field>    
+        </form>      
+        <br>      
+           
+        <button type="submit" (click)="AddItem()" [disabled]="IsForUpdate == true" class="btn btn-default">Add</button>      
+            
+      </div>      
+    </div>
+    
+    <button (click)="submit()">Registrar</button>
+
+  </form>
+-->

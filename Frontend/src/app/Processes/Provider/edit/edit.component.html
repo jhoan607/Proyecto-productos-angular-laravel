@@ -1,0 +1,144 @@
+<div class="container">
+  <mat-card class="contact-card">
+    <mat-card-header>
+      <mat-card-title><mat-icon>person_add</mat-icon>&nbsp; Actualizar Proveedor</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+  <form autocomplete="off" [formGroup]="providerForm" novalidate>
+    
+  
+   
+      <mat-form-field>
+        <mat-label>Nombre</mat-label>
+        <input [(ngModel)]="proveedor.nombre" formControlName="nombre" name="nombre" id="nombre" type="text" matInput placeholder="Ingrese Nombre" >
+      <mat-error *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
+        <mat-error *ngIf="nombre.errors.required">
+          Nombre Requerido
+        </mat-error>
+        </mat-error>
+      </mat-form-field>
+  
+  
+  
+  
+      <mat-form-field>
+        <mat-label>Apellido</mat-label>
+        <input [(ngModel)]="proveedor.apellido" formControlName="apellido" name="apellido" id="apellido" type="text" matInput placeholder="Ingrese Apellido">
+        <mat-error *ngIf="apellido.invalid && (apellido.dirty || apellido.touched)">
+          <mat-error *ngIf="apellido.errors.required">
+            Apellido Requerido
+          </mat-error>
+          </mat-error>
+      </mat-form-field>
+  
+  
+      
+      <mat-form-field>
+        <mat-label>Tipo Documento</mat-label>
+        <select matNativeControl [(ngModel)]="proveedor.tipo_documento" formControlName="tipo_documento" name="tipo_documento" required>
+                <option value="true" selected disabled>Seleccione Documento</option>
+                <option *ngFor="let documento of documentos" value={{documento.id}} >{{documento.nombre_documento}}</option>
+      
+              </select>
+       </mat-form-field>
+    
+  
+  
+    
+  
+  
+      <mat-form-field>
+        <mat-label>Documento</mat-label>
+        <input [(ngModel)]="proveedor.documento" formControlName="documento" name="documento" id="documento" type="number" matInput placeholder="Ingrese Documento">
+        <mat-error *ngIf="documento.invalid && (documento.dirty || documento.touched)">
+          <mat-error *ngIf="documento.errors.required">
+            Documento Requerido
+          </mat-error>
+          </mat-error>
+      </mat-form-field>
+  
+  
+  
+  
+      <mat-form-field>
+        <mat-label>Telefono</mat-label>
+        <input [(ngModel)]="proveedor.telefono" formControlName="telefono" name="telefono" id="telefono" type="number" matInput placeholder="Ingrese Telefono">
+        <mat-error *ngIf="telefono.invalid && (telefono.dirty || telefono.touched)">
+          <mat-error *ngIf="telefono.errors.required">
+            Telefono Requerido
+          </mat-error>
+          </mat-error>
+      </mat-form-field>
+  
+  
+  
+      <mat-form-field>
+        <mat-label>Celular</mat-label>
+        <input [(ngModel)]="proveedor.celular" formControlName="celular" name="celular" id="celular" type="text" matInput placeholder="Ingrese Celular">
+        <mat-error *ngIf="celular.invalid && (celular.dirty || celular.touched)">
+          <mat-error *ngIf="celular.errors.required">
+            Celular Requerido
+          </mat-error>
+          </mat-error>
+      </mat-form-field>
+  
+    
+  
+  
+      <mat-form-field>
+        <mat-label>Departamento</mat-label>
+        <input [(ngModel)]="proveedor.departamento" formControlName="departamento" name="departamento" id="departamento" type="text" matInput placeholder="Ingrese Departamento">
+        <mat-error *ngIf="departamento.invalid && (departamento.dirty || departamento.touched)">
+          <mat-error *ngIf="departamento.errors.required">
+            Departamento Requerido
+          </mat-error>
+          </mat-error>
+      </mat-form-field>
+  
+  
+  
+  
+    <mat-form-field>
+        <mat-label>Ciudad</mat-label>
+        <input [(ngModel)]="proveedor.ciudad" formControlName="ciudad" name="ciudad" id="ciudad" type="text" matInput placeholder="Ingrese Ciudad">
+        <mat-error *ngIf="ciudad.invalid && (ciudad.dirty || ciudad.touched)">
+          <mat-error *ngIf="ciudad.errors.required">
+            Ciudad Requerido
+          </mat-error>
+          </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Estado</mat-label>
+        <select matNativeControl [(ngModel)]="proveedor.estado" formControlName="estado" name="estado" required>
+  
+          <option value="true" selected disabled>Seleccione Estado</option>
+          <option value="1">Activo</option>
+          <option value="2">Inactivo</option>
+  
+        </select>
+        <mat-error *ngIf="estado.invalid && (estado.dirty || estado.touched)">
+          <mat-error *ngIf="estado.errors.required">
+            Estado Requerido
+          </mat-error>
+          </mat-error>
+  
+      </mat-form-field>
+  
+      <div class="row">
+        <div class="col-md-12 mb-3">
+      <button (click)="Actualizar(proveedor)" [disabled]="!providerForm.valid" class="btn btn-primary">Actualizar</button>
+      <button style="float:right;" type="reset" class="btn btn-secondary">Limpiar</button>
+      </div>
+      </div>
+     
+    </form>
+  </mat-card-content>
+  </mat-card>
+  </div>
+
+
+
+
+
+        

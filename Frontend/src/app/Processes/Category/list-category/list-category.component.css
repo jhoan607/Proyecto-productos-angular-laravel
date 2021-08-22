@@ -1,0 +1,48 @@
+/* Structure padding: 75px 0px; */
+table {
+    width: 100%;
+  }
+
+  mat-form-field{
+    width: 100%;
+}
+
+
+.footer{
+    margin-top: 20px;
+}
+  
+
+  pagination-controls{
+    float:right;
+  }
+
+  .input-group{
+    width: 30%;
+    float:right;
+    }
+
+  .container-fluid {
+    width: 60%;
+  }
+
+  .table tbody tr:hover {
+    color: black;
+    background: #D3D6D9;
+  }
+
+
+  @media (min-width: 320px) and (max-width: 1200px) {
+    .container-fluid {
+      width: 100%;
+    }
+
+    .input-group{
+      width: 100%;
+      }
+
+
+
+  }
+
+  

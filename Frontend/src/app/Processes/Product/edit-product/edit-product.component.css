@@ -1,0 +1,25 @@
+mat-form-field {
+    width: 50%;
+  }
+  
+  .container{
+    width: 65%;
+    padding: 5%;
+  }
+
+  button{
+    width: 40%;
+    margin-top:25px;
+  }
+
+  @media (min-width: 320px) and (max-width: 1200px) {
+    .container {
+      width: 100%;
+    }
+
+    mat-form-field {
+      width: 100%;
+    }
+
+
+  }

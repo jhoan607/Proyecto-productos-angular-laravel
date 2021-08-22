@@ -1,0 +1,67 @@
+/*
+ *{
+   padding: 0;
+   
+ }
+
+ mat-toolbar{
+  position: fixed;
+  top: 0;
+  width: 100%;
+  
+ }
+
+ 
+  mat-sidenav {
+    width: 300px;
+    cursor: pointer;
+    position: fixed;
+    top: 62px;
+    z-index: 1000;
+    background-color: rgb(41, 40, 38);
+    color:white;
+  
+  }
+
+  
+    mat-sidenav mat-nav-list a{
+      padding: 0px;
+      font-size: 1.1em;
+      display: block;
+    }
+    mat-sidenav mat-nav-list a:hover {
+        color: #7386D5;
+        background: #fff;
+    }
+
+  
+  
+  .mat-list-base .mat-list-item,
+  a {
+    text-decoration: none;
+    cursor: pointer;
+    color: white;
+  }
+
+  .icono{
+    margin-right: 10px;
+  }
+
+  .app-name{
+    margin-left: 8px;
+  }
+
+  button{
+border-radius:10px;
+outline:none;
+}
+
+
+@media(maz-width:968px){
+	mat-sidenav{margin-left: 250px;}
+
+
+
+  }
+
+  */

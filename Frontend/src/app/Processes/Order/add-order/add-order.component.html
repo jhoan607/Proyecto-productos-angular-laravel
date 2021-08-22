@@ -1,0 +1,176 @@
+<div class="container">
+    
+ <form [formGroup]="orderForm">
+
+  <mat-form-field>
+    <mat-label>Seleccionar Persona</mat-label>
+    <select matNativeControl [(ngModel)]="order.id_persona" formControlName="id_persona" name="id_persona" required>
+
+      <option value="true" selected disabled>Seleccione Persona</option>
+      <option *ngFor="let client of clients" value={{client.id}} >{{client.documento}} - {{client.nombre}}</option>
+
+    </select>
+    
+
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Fecha Pedido</mat-label>
+    <input [(ngModel)]="order.fecha_pedido" formControlName="fecha_pedido" name="fecha_pedido" id="fecha_pedido" type="text" matInput placeholder="Ingrese Fecha Pedido">
+    
+  </mat-form-field>
+
+
+  
+  <mat-form-field>
+    <mat-label>Comentario</mat-label>
+    <input [(ngModel)]="order.comentario" formControlName="comentario" name="comentario" id="comentario" type="string" matInput placeholder="Ingrese Comentario">
+    <mat-error *ngIf="comentario.invalid && (comentario.dirty || comentario.touched)">
+      <mat-error *ngIf="comentario.errors.required">
+        comentario Requerido
+      </mat-error>
+      </mat-error>
+  </mat-form-field>
+
+
+  
+
+
+  <div class="form-group">
+    <a class="btn btn-primary" (click)="agregarTelefono()">Agregar Teléfono</a>
+  </div>
+
+  
+  <div class="table-responsive">
+  <table class="table row-border hover table-striped table-bordered" style="width: 70%;">
+    <thead style="font-size:90%;" class="thead-dark">
+      <tr>
+       <th width="30%">Producto</th>
+       <th width="30%">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr  formArrayName="productos" *ngFor="let producto of productos.controls; let i = index">
+      <td [formGroupName]="i">
+        
+        <select class="form-control" value="1" type="number" formControlName="id_producto">
+          
+          <option value="true" selected disabled>Seleccione Producto</option>
+          <option *ngFor="let product of products" value={{product.id}} >{{product.nombre_producto}}</option>
+    
+        </select>
+      </td>
+      <td>
+        <button class="btn btn-outline-danger" (click)="removerTelefono(i)">Eliminar</button>
+      </td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+  
+
+
+  <div class="row">
+    <div class="col-md-12 mb-3">
+  <button (click)="Guardar()" class="btn btn-primary">Guardar</button>
+  <button style="float:right;" type="reset" class="btn btn-secondary">Limpiar</button>
+  </div>
+  </div>
+ 
+</form>
+</div>
+
+
+
+
+
+<!--
+
+  <div class="container">
+    
+ <form [formGroup]="orderForm">
+
+  <mat-form-field>
+    <mat-label>Seleccionar Persona</mat-label>
+    <select matNativeControl [(ngModel)]="order.id_persona" formControlName="id_persona" name="id_persona" required>
+
+      <option value="true" selected disabled>Seleccione Persona</option>
+      <option *ngFor="let client of clients" value={{client.id}} >{{client.documento}} - {{client.nombre}}</option>
+
+    </select>
+    
+
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Fecha Pedido</mat-label>
+    <input [(ngModel)]="order.fecha_pedido" formControlName="fecha_pedido" name="fecha_pedido" id="fecha_pedido" type="text" matInput placeholder="Ingrese Fecha Pedido">
+    
+  </mat-form-field>
+
+
+  
+  <mat-form-field>
+    <mat-label>Comentario</mat-label>
+    <input [(ngModel)]="order.comentario" formControlName="comentario" name="comentario" id="comentario" type="string" matInput placeholder="Ingrese Comentario">
+    <mat-error *ngIf="comentario.invalid && (comentario.dirty || comentario.touched)">
+      <mat-error *ngIf="comentario.errors.required">
+        comentario Requerido
+      </mat-error>
+      </mat-error>
+  </mat-form-field>
+
+
+  <mat-form-field>
+    <mat-label>Seleccionar Producto</mat-label>
+    <select matNativeControl  minlength="3" maxlength="10" style="width: 50%;" placeholder="Enter Any Item">
+
+      <option value="true" selected disabled>Seleccione Producto</option>
+      <option *ngFor="let product of products" value={{product.id}} >{{product.referencia}} - {{product.nombre_producto}}</option>
+
+    </select>
+  
+
+  </mat-form-field>  
+
+
+  <div class="form-group">
+    <a class="btn btn-primary" (click)="agregarTelefono()">Agregar Teléfono</a>
+  </div>
+
+  <div formArrayName="productos" *ngFor="let producto of productos.controls; let i = index">
+    <div [formGroupName]="i">
+      <div class="form-group row">
+        <label class="col-md-1" [attr.for]="'id_producto' + i">Producto</label>
+        <div class="col-md-3">
+          <input value="1" type="number" [attr.id]="'id_producto' + i" class="form-control" formControlName="id_producto">
+        </div>
+
+    
+        <div class="col-md-2">
+          <button class="btn btn-danger" (click)="removerTelefono(i)">Remover</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+
+
+  <div class="row">
+    <div class="col-md-12 mb-3">
+  <button (click)="Guardar()" class="btn btn-primary">Guardar</button>
+  <button style="float:right;" type="reset" class="btn btn-secondary">Limpiar</button>
+  </div>
+  </div>
+ 
+</form>
+</div>
+
+
+
+
+
+
+-->

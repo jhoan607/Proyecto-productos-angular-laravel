@@ -1,0 +1,85 @@
+<div class="container-fluid" style="width: 80%;">
+    <div class="card">
+      <div class="card-header">
+        <h5>Productos</h5>
+      </div>
+      <div class="card-body">
+        <button routerLink="/addProduct" class="btn btn-outline-success" data-toggle="modal" data-target="#AgregarAdmin">Agregar Producto</button>
+         
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1"><mat-icon>search</mat-icon></span>
+          </div>
+          <input type="text" class="form-control" name="filterPost" placeholder="Search..." [(ngModel)]="filterPost">
+        </div>
+        <div class="table-responsive">
+        <table class="table row-border hover table-striped table-bordered">
+          <thead style="font-size:90%;" class="thead-dark">
+            <tr>
+              <th>Proveedor</th>
+              <th>Referencia</th>
+              <th>Producto</th>
+              <th>Categoria</th>
+              <th>Cantidad</th>
+              <th>Estado</th>
+              <th style="text-align: center; width: 10%;" colspan="3">ACCIONES</th>
+              
+
+            </tr>
+          </thead>
+          <tbody style="font-size:90%;" >
+            <tr *ngFor="let product of products | filter:filterPost | paginate: {itemsPerPage: 5, currentPage: pageActual};" class="text-center">
+              <td>{{product.nombre}}</td>
+              <td>{{product.referencia}}</td>
+              <td>{{product.nombre_producto}}</td>
+              <td>{{product.nombre_categoria}}</td>
+              <td>{{product.cantidad}}</td>
+              <td>{{product.estado}}</td>
+
+              <td style="justify-content: space-around">
+                <div class="btn-group" role="group" aria-label="Basic example">
+                <button (click)="informacion(product)" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModalCenter"><mat-icon>remove_red_eye</mat-icon></button>&nbsp;
+  
+                <button (click)="Editar(product)" class="btn btn-outline-primary"><mat-icon>edit</mat-icon></button>&nbsp;
+             
+                <button (click)="Delete(product)" class="btn btn-outline-danger"><mat-icon>delete</mat-icon></button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <pagination-controls (pageChange)="pageActual = $event"></pagination-controls>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Información Completa</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+ 
+              <label>{{product.referencia}}</label><br>
+              <label>{{product.nombre_producto}}</label><br>
+            <!--  <td>{{proveedor.tipo_documento}}</td> -->
+              <label>{{product.precio_unitario}}</label><br>
+            <!--   <td>{{proveedor.telefono}}</td>  -->
+              <label>{{product.cantidad}}</label><br>
+              <label>{{product.estado}}</label><br>
+              
+
+        </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

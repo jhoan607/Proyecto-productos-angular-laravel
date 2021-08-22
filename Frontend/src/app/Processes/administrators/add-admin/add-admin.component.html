@@ -1,0 +1,83 @@
+ <!-- Modal Registrar -->
+ <div class="modal fade" id="AgregarAdmin" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Registro</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+  
+            <mat-card class="contact-card">
+              <mat-card-header>
+                <mat-card-title><mat-icon>person_add</mat-icon>&nbsp; Registrar Categoria</mat-card-title>
+              </mat-card-header>
+              <mat-card-content>
+            <form autocomplete="off" [formGroup]="adminForm" novalidate>
+            <mat-form-field>
+              <mat-label>Nombre</mat-label>
+              <input [(ngModel)]="admin.name" formControlName="name" name="name" id="name" type="text" matInput placeholder="Ingrese Nombre">
+              <mat-error *ngIf="name.invalid && (name.dirty || name.touched)">
+                <mat-error *ngIf="name.errors.required">
+                  Nombre Requerido
+                </mat-error>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Email</mat-label>
+                <input [(ngModel)]="admin.email" formControlName="email" name="email" id="email" type="email" matInput placeholder="Ingrese Email">
+                <mat-error *ngIf="email.invalid && (email.dirty || email.touched)">
+                  <mat-error *ngIf="email.errors.required">
+                    Nombre Requerido
+                  </mat-error>
+                  </mat-error>
+              </mat-form-field>
+
+              <mat-form-field>
+                <mat-label>Contraseña</mat-label>
+                <input [(ngModel)]="admin.password" formControlName="password" name="password" id="password" type="password" matInput placeholder="Ingrese Email">
+                <mat-error *ngIf="password.invalid && (password.dirty || password.touched)">
+                  <mat-error *ngIf="password.errors.required">
+                    Nombre Requerido
+                  </mat-error>
+                  </mat-error>
+              </mat-form-field>
+        
+            <mat-form-field>
+              <mat-label>Rol</mat-label>
+              <select matNativeControl [(ngModel)]="admin.rol" formControlName="rol" name="rol" required>
+        
+                <option value="true" selected disabled>Seleccione Rol</option>
+                <option value="1">Administrador</option>
+                <option value="2">Usurio</option>
+        
+              </select>
+              <mat-error *ngIf="rol.invalid && (rol.dirty || rol.touched)">
+                <mat-error *ngIf="rol.errors.required">
+                  Rol Requerido
+                </mat-error>
+                </mat-error>
+            </mat-form-field>
+            <div class="footer">
+            <div class="row">
+              <div class="col-md-12 mb-3">
+            <button (click)="Save(admin)" [disabled]="!adminForm.valid" class="btn btn-primary">Guardar</button>
+            <button style="float:right;" type="button" #btnCloseAdmin data-dismiss="modal" class="btn btn-secondary">Cerrar</button>
+            </div>
+            </div>
+          </div>
+          </form>
+          </mat-card-content>
+          </mat-card>
+  
+          </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  
+  

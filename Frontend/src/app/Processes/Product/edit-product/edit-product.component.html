@@ -1,0 +1,136 @@
+
+<div class="container">
+    <mat-card class="contact-card">
+      <mat-card-header>
+        <mat-card-title><mat-icon>person_add</mat-icon>&nbsp; Actualizar Producto</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+    <form autocomplete="off" [formGroup]="productForm" novalidate>
+      
+    
+     
+        <mat-form-field>
+            <mat-label>Seleccionar Persona</mat-label>
+            <select matNativeControl [(ngModel)]="product.id_proveedor" formControlName="id_proveedor" name="id_proveedor" required>
+      
+              <option value="true" selected disabled>Seleccione Persona</option>
+              <option *ngFor="let provider of providers" value={{provider.id}} >{{provider.nombre}}</option>
+      
+            </select>
+            <mat-error *ngIf="id_proveedor.invalid && (id_proveedor.dirty || id_proveedor.touched)">
+              <mat-error *ngIf="id_proveedor.errors.required">
+                Persona Requerida
+              </mat-error>
+              </mat-error>
+      
+          </mat-form-field>
+    
+    
+    
+    
+        <mat-form-field>
+          <mat-label>Referencia</mat-label>
+          <input [(ngModel)]="product.referencia" formControlName="referencia" name="referencia" id="referencia" type="number" matInput placeholder="Ingrese Apellido">
+          <mat-error *ngIf="referencia.invalid && (referencia.dirty || referencia.touched)">
+            <mat-error *ngIf="referencia.errors.required">
+              Referencia Requerido
+            </mat-error>
+            </mat-error>
+        </mat-form-field>
+    
+    
+
+      
+    
+    
+        <mat-form-field>
+          <mat-label>Nombre Producto</mat-label>
+          <input [(ngModel)]="product.nombre_producto" formControlName="nombre_producto" name="nombre_producto" id="nombre_producto" type="text" matInput placeholder="Ingrese Documento">
+          <mat-error *ngIf="nombre_producto.invalid && (nombre_producto.dirty || nombre_producto.touched)">
+            <mat-error *ngIf="nombre_producto.errors.required">
+              Nombre Producto Requerido
+            </mat-error>
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Seleccionar Categoria</mat-label>
+          <select matNativeControl [(ngModel)]="product.id_categoria" formControlName="id_categoria" name="id_categoria" required>
+    
+            <option value="true" selected disabled>Seleccione Categoria</option>
+            <option *ngFor="let category of categories" value={{category.id}} >{{category.nombre_categoria}}</option>
+    
+          </select>
+          <mat-error *ngIf="id_categoria.invalid && (id_categoria.dirty || id_categoria.touched)">
+            <mat-error *ngIf="id_categoria.errors.required">
+              Categoria Requerida
+            </mat-error>
+            </mat-error>
+    
+        </mat-form-field>
+    
+    
+    
+    
+        <mat-form-field>
+          <mat-label>Precio</mat-label>
+          <input [(ngModel)]="product.precio_unitario" formControlName="precio_unitario" name="precio_unitario" id="precio_unitario" type="number" matInput placeholder="Ingrese Telefono">
+          <mat-error *ngIf="precio_unitario.invalid && (precio_unitario.dirty || precio_unitario.touched)">
+            <mat-error *ngIf="precio_unitario.errors.required">
+              Precio Requerido
+            </mat-error>
+            </mat-error>
+        </mat-form-field>
+    
+    
+    
+        <mat-form-field>
+          <mat-label>Cantidad</mat-label>
+          <input [(ngModel)]="product.cantidad" formControlName="cantidad" name="cantidad" id="cantidad" type="number" matInput placeholder="Ingrese Celular">
+          <mat-error *ngIf="cantidad.invalid && (cantidad.dirty || cantidad.touched)">
+            <mat-error *ngIf="cantidad.errors.required">
+              Cantidad Requerido
+            </mat-error>
+            </mat-error>
+        </mat-form-field>
+    
+      
+    
+    
+        
+        <mat-form-field>
+          <mat-label>Estado</mat-label>
+          <select matNativeControl [(ngModel)]="product.estado" formControlName="estado" name="estado" required>
+    
+            <option value="true" selected disabled>Seleccione Estado</option>
+            <option value="1">Activo</option>
+            <option value="2">Inactivo</option>
+    
+          </select>
+          <mat-error *ngIf="estado.invalid && (estado.dirty || estado.touched)">
+            <mat-error *ngIf="estado.errors.required">
+              Estado Requerido
+            </mat-error>
+            </mat-error>
+    
+        </mat-form-field>
+    
+    
+    
+    
+        <div class="row">
+          <div class="col-md-12 mb-3">
+        <button (click)="Actualizar(product)" [disabled]="!productForm.valid" class="btn btn-primary">Guardar</button>
+        <button style="float:right;" type="reset" class="btn btn-secondary">Limpiar</button>
+        </div>
+        </div>
+       
+      </form>
+    </mat-card-content>
+    </mat-card>
+    </div>
+    
+    
+    
+    
+    

@@ -1,0 +1,85 @@
+
+  <div class="container-fluid">
+    <section class="row">
+      <article class="col-md-6">
+        
+        <div class="card">
+          <div class="card-header">
+            <h5>Productos en stop maximo</h5>
+          </div>
+
+          <div class="card-body">
+            <!-- <table class="table table-hover" class="responsive-table">-->
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1"><mat-icon>search</mat-icon></span>
+                </div>
+                <input type="text" class="form-control" name="filterPost" placeholder="Search..." [(ngModel)]="filterStopMaximo">
+              </div>
+        
+        <div class="table-responsive">
+          <table class="table row-border table-hover table-striped table-bordered">
+            <thead style="font-size:90%;" class="thead-dark">
+              <tr>
+                <td>Referencia</td>
+                <td>Nombre</td>
+                <td>Cantidad</td>
+              </tr>
+            </thead>
+            <tbody style="font-size:90%;" >
+              <tr *ngFor="let minimo of stopMinimo | filter:filterStopMinimo | paginate: {itemsPerPage: 5, currentPage: pageActual};" class="text-center">
+               <!--| filter:filterPost-->
+               <td>{{minimo.referencia}}</td>
+               <td>{{minimo.nombre_producto}}</td>
+               <td style="background-color:red">{{minimo.cantidad}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <pagination-controls (pageChange)="pageActual = $event"></pagination-controls>
+        </div>
+        </div>
+      </article>
+    
+      <article class="col-md-6">
+       
+        <div class="card">
+          <div class="card-header">
+            <h5>Productos en stop minimo</h5>
+          </div>
+
+          <div class="card-body">
+            <!-- <table class="table table-hover" class="responsive-table">-->
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1"><mat-icon>search</mat-icon></span>
+                </div>
+                <input type="text" class="form-control" name="filterPost" placeholder="Search..." [(ngModel)]="filterStopMaximo">
+              </div>
+       
+        <div class="table-responsive">
+          <table class="table row-border table-hover table-striped table-bordered">
+            <thead style="font-size:90%;" class="thead-dark">
+              <tr>
+                <td>Referencia</td>
+                <td>Nombre</td>
+                <td>Cantidad</td>
+              </tr>
+            </thead>
+            <tbody style="font-size:90%;" >
+              <tr *ngFor="let maximo of stopMaximo | filter:filterStopMaximo | paginate: {itemsPerPage: 5, currentPage: pageActual};" class="text-center">
+               <!--| filter:filterPost-->
+               <td>{{maximo.referencia}}</td>
+               <td>{{maximo.nombre_producto}}</td>
+               <td style="background-color:green">{{maximo.cantidad}}</td>
+  
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <pagination-controls (pageChange)="pageActual = $event"></pagination-controls>
+        </div>
+        </div>
+  </article>
+  </section>
+</div>

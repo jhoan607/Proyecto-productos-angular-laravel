@@ -1,0 +1,177 @@
+<div class="container-fluid">
+   
+    <div class="card">
+      <div class="card-header">
+        <h5>Categorias</h5>
+      </div>
+      <div class="card-body">
+        <button class="btn btn-outline-success" (click)="limpiar()" data-toggle="modal" data-target="#AgregarCategoria">Agregar Categoria</button>
+     
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1"><mat-icon>search</mat-icon></span>
+          </div>
+          <input type="text" class="form-control" name="filterPost" placeholder="Search..." [(ngModel)]="filterPost">
+        </div>
+
+        <div class="table-responsive">
+        <table class="table row-border hover table-striped table-bordered">
+          <thead style="font-size:90%;" class="thead-dark">
+            <tr>
+              <th>Nombre Categoria</th>
+              <th>estado</th>
+              <th style="text-align: center; width: 10%;" colspan="3">ACCIONES</th>
+              
+
+            </tr>
+          </thead>
+          <tbody style="font-size:90%;" >
+            <tr *ngFor="let category of categories  | filter:filterPost | paginate: {itemsPerPage: 5, currentPage: pageActual};" class="text-center">
+              <td>{{category.nombre_categoria}}</td>
+              <td>{{category.estado}}</td>
+
+              <td style="justify-content: space-around">
+                <div class="btn-group" role="group" aria-label="Basic example">
+                <button (click)="Editar(category)" class="btn btn-outline-primary" data-toggle="modal" data-target="#EditarCategoria"><mat-icon>edit</mat-icon></button>&nbsp;
+              
+                <button (click)="Delete(category)" class="btn btn-outline-danger" style="margin-left: 10px;"><mat-icon>delete</mat-icon></button>
+             </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <pagination-controls (pageChange)="pageActual = $event"></pagination-controls>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <!-- Modal Registrar -->
+<div class="modal fade" id="AgregarCategoria" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Registro</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+          <mat-card class="contact-card">
+            <mat-card-header>
+              <mat-card-title><mat-icon>person_add</mat-icon>&nbsp; Registrar Categoria</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+          <form autocomplete="off" [formGroup]="categoryForm" novalidate>
+          <mat-form-field>
+            <mat-label>Nombre</mat-label>
+            <input [(ngModel)]="category.nombre_categoria" formControlName="nombre_categoria" name="nombre_categoria" type="rexr" matInput placeholder="Ingrese Nombre">
+            <mat-error *ngIf="nombre_categoria.invalid && (nombre_categoria.dirty || nombre_categoria.touched)">
+              <mat-error *ngIf="nombre_categoria.errors.required">
+                Nombre Requerido
+              </mat-error>
+              </mat-error>
+          </mat-form-field>
+      
+          <mat-form-field>
+            <mat-label>Estado</mat-label>
+            <select matNativeControl [(ngModel)]="category.estado" formControlName="estado" name="estado" required>
+      
+              <option value="true" selected disabled>Seleccione Estado</option>
+              <option value="1">Activo</option>
+              <option value="2">Inactivo</option>
+      
+            </select>
+            <mat-error *ngIf="estado.invalid && (estado.dirty || estado.touched)">
+              <mat-error *ngIf="estado.errors.required">
+                Estado Requerido
+              </mat-error>
+              </mat-error>
+          </mat-form-field>
+          <div class="footer">
+          <div class="row">
+            <div class="col-md-12 mb-3">
+          <button (click)="Guardar(category)" [disabled]="!categoryForm.valid" class="btn btn-primary">Guardar</button>
+          <button style="float:right;" type="button" #btnCloseAdd data-dismiss="modal" class="btn btn-secondary">Cerrar</button>
+          </div>
+          </div>
+        </div>
+        </form>
+        </mat-card-content>
+        </mat-card>
+
+        </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+ <!-- Modal Editar -->
+ <div class="modal fade" id="EditarCategoria" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Actualizar</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+
+          <mat-card class="contact-card">
+            <mat-card-header>
+              <mat-card-title><mat-icon>person_add</mat-icon>&nbsp; Registrar Categoria</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+          <form autocomplete="off" [formGroup]="categoryForm" novalidate>
+            <mat-form-field>
+              <mat-label>Nombre</mat-label>
+              <input [(ngModel)]="category.nombre_categoria" formControlName="nombre_categoria" name="nombre_categoria" type="rexr" matInput placeholder="Ingrese Nombre">
+              <mat-error *ngIf="nombre_categoria.invalid && (nombre_categoria.dirty || nombre_categoria.touched)">
+                <mat-error *ngIf="nombre_categoria.errors.required">
+                  Nombre Requerido
+                </mat-error>
+                </mat-error>
+            </mat-form-field>
+        
+            <mat-form-field>
+              <mat-label>Estado</mat-label>
+              <select matNativeControl [(ngModel)]="category.estado" formControlName="estado" name="estado" required>
+        
+                <option value="true" selected disabled>Seleccione Estado</option>
+                <option value="1">Activo</option>
+                <option value="2">Inactivo</option>
+        
+              </select>
+              <mat-error *ngIf="estado.invalid && (estado.dirty || estado.touched)">
+                <mat-error *ngIf="estado.errors.required">
+                  Estado Requerido
+                </mat-error>
+                </mat-error>
+        
+            </mat-form-field>
+
+            <div class="footer">
+            <div class="row">
+              <div class="col-md-12 mb-3">
+            <button (click)="Actualizar(category)" [disabled]="!categoryForm.valid" class="btn btn-primary">Actualizar</button>
+            <button style="float:right;" type="button" class="btn btn-secondary" #btnClose data-dismiss="modal">Cerrar</button>
+            </div>
+            </div>
+          </div>
+          </form>
+        </mat-card-content>
+          </mat-card>
+          </div>
+      </div>
+    </div>
+  </div>

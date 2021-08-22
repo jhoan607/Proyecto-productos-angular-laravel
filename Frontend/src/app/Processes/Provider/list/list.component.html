@@ -1,0 +1,141 @@
+
+<div class="container-fluid">
+    <div class="card">
+      <div class="card-header">
+        <h5>Personas</h5>
+      </div>
+      <div class="card-body">
+      <!-- <table class="table table-hover" class="responsive-table">-->
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1"><mat-icon>search</mat-icon></span>
+          </div>
+          <input type="text" class="form-control" name="filterPost" placeholder="Search..." [(ngModel)]="filterPost">
+        </div>
+        <div class="table-responsive">
+        <table class="table row-border table-hover table-striped table-bordered">
+          <thead style="font-size:90%;" class="thead-dark">
+            <tr style="text-align: center;">
+              <th width="8%">Nombre</th>
+              <th width="10%">Tipo Doc</th>
+              <th width="5%">Documento</th>
+              <th width="5%">Celular</th>
+              <th width="5%">Estado</th>
+              <th style="width: 5%;" colspan="3">Acciones</th>
+              
+
+            </tr>
+          </thead>
+          <tbody style="font-size:90%;" >
+            <tr *ngFor="let proveedor of proveedores | filter:filterPost | paginate: {itemsPerPage: 5, currentPage: pageActual};" class="text-center">
+             <!--| filter:filterPost-->
+              <td>{{proveedor.nombre}}</td>
+              <td>{{proveedor.nombre_documento}}</td>
+              <td>{{proveedor.documento}}</td>
+              <td>{{proveedor.celular}}</td>
+              <td>{{proveedor.estado}}</td>
+
+              <td style="justify-content: space-around">
+              
+                <div class="btn-group" role="group" aria-label="Basic example">
+                  <button (click)="informacion(proveedor)" type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModalCenter"><mat-icon>remove_red_eye</mat-icon></button>&nbsp;
+                  <button (click)="Editar(proveedor)" type="button" class="btn btn-outline-primary"><mat-icon>edit</mat-icon></button>&nbsp;
+                  <button (click)="Delete(proveedor)" type="button" class="btn btn-outline-danger"><mat-icon>delete</mat-icon></button>              
+                </div>
+              
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <pagination-controls (pageChange)="pageActual = $event"></pagination-controls>
+      </div>
+    </div>
+  </div>
+
+  
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Información Completa</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+ 
+              <label>{{proveedor.nombre}}</label><br>
+              <label>{{proveedor.apellido}}</label><br>
+            <!--  <td>{{proveedor.tipo_documento}}</td> -->
+              <label>{{proveedor.documento}}</label><br>
+            <!--   <td>{{proveedor.telefono}}</td>  -->
+              <label>{{proveedor.celular}}</label><br>
+              <label>{{proveedor.departamento}}</label><br>
+              <label>{{proveedor.ciudad}}</label>
+              <label>{{proveedor.estado}}</label>
+              
+
+        </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <!--
+
+  <mat-form-field>
+    <mat-label>Buscar</mat-label>
+    <input matInput (keyup)="filtrar($event)" placeholder="buscar">
+  </mat-form-field>
+
+  <table mat-table [dataSource]="proveedores" class="mat-elevation-z8">
+
+    
+    <ng-container matColumnDef="nombre" >
+      <th mat-header-cell *matHeaderCellDef> No. </th>
+      <td mat-cell *matCellDef="let proveedor"> {{proveedor.nombre}} </td>
+    </ng-container>
+  
+    
+    <ng-container matColumnDef="apellido">
+      <th mat-header-cell *matHeaderCellDef> apellido </th>
+      <td mat-cell *matCellDef="let proveedor"> {{proveedor.apellido}} </td>
+    </ng-container>
+  
+    
+    <ng-container matColumnDef="documento">
+      <th mat-header-cell *matHeaderCellDef> documento </th>
+      <td mat-cell *matCellDef="let proveedor"> {{proveedor.documento}} </td>
+    </ng-container>
+  
+    
+    <ng-container matColumnDef="ciudad">
+      <th mat-header-cell *matHeaderCellDef> ciudad </th>
+      <td mat-cell *matCellDef="let proveedor"> {{proveedor.ciudad}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="acciones">
+      <th mat-header-cell *matHeaderCellDef> Acciones </th>
+      <td mat-cell *matCellDef="let proveedor"> {{proveedor.acciones}} 
+        <button (click)="Editar(proveedor)" class="btn btn-warning">Editar</button>
+        <button (click)="Delete(proveedor)" class="btn btn-danger" style="margin-left: 10px;">Delete</button>
+      </td>
+    </ng-container>
+  
+    <tr  mat-header-row *matHeaderRowDef="displayedColumns" ></tr>
+    <tr  mat-row *matRowDef="let row; columns: displayedColumns;" ></tr>
+  </table>
+
+  <mat-paginator
+  [pageSizeOptions]="[5, 10, 20]"
+  showFirstLastButtons
+></mat-paginator>
+  
+-->

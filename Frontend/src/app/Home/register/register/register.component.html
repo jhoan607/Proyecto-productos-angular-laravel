@@ -1,0 +1,49 @@
+<div class="padre">
+    <div class="hijo">
+        <div class="col-md-6-mt-5 mx-auto">
+            <form (submit)="register()" autocomplete="off" [formGroup]="registerForm">
+                <h1 class="h3 mb-3 font-weight-normal">Registrarme</h1>
+
+                <div class="form-group">
+                    <label for="name">Ingrese Nombre</label>
+                    <input type="text" formControlName="name" class="form-control" name="name" placeholder="Enter Name" [(ngModel)]="credentials.name">
+                
+                    <div style="color:red" *ngIf="name.invalid && (name.dirty || name.touched)">
+                        <div *ngIf="name.errors.required">Nombre Requerido</div>
+                        <div *ngIf="name.errors.minlength">Almenos {{name.errors.minlength.requiredLength}} caracteres.</div>
+                    
+                      </div>
+                
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Ingrese Correo</label>
+                    <input type="email" formControlName="email" class="form-control" name="email" placeholder="Enter Email" [(ngModel)]="credentials.email">
+                   
+                    <div style="color:red" *ngIf="email.invalid && (email.dirty || email.touched)">
+                        <div *ngIf="email.errors.required">Correo Requerido</div>
+                        <div *ngIf="email.errors.minlength">Almenos {{email.errors.minlength.requiredLength}} caracteres.</div>
+                        <div *ngIf="(email.dirty || email.touched) && email.invalid && email.errors.pattern">
+                          Ingrese correo valido</div>
+                      </div>
+                
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Ingrese Contraseña</label>
+                    <input type="password" formControlName="password" class="form-control" name="password" placeholder="Enter Password" [(ngModel)]="credentials.password">
+                   
+                    <div  style="color:red" *ngIf="password.invalid && (password.dirty || password.touched)">
+                        <div *ngIf="password.errors.required">Contraseña requerida</div>
+                        <div *ngIf="password.errors.minlength">Almenos {{password.errors.minlength.requiredLength}} caracteres.</div>
+                      </div>
+                
+                </div>
+
+                <button type="submit" [disabled]="!registerForm.valid" class="btn btn-lg btn-primary btn-block">Registrarme</button>
+
+            </form>
+        </div>
+    </div>
+</div>
+

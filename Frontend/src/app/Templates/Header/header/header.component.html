@@ -1,0 +1,135 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+
+  <button class="boton-icono" *ngIf="auth.isLoggedIn()" mat-icon-button (click)="opened = !opened">
+    <mat-icon>menu</mat-icon></button>
+
+  <a *ngIf="!auth.isLoggedIn()" class="navbar-brand" >
+    Kardex
+  </a>
+
+  <button *ngIf="!auth.isLoggedIn()" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+
+     
+      <li  *ngIf="!auth.isLoggedIn()" class="nav-item active">
+       
+        <a class="nav-link" routerLink="/">Home <span class="sr-only">(current)</span></a>
+      </li>
+
+      <li  *ngIf="!auth.isLoggedIn()" class="nav-item">
+        <a class="nav-link" routerLink="/contacto">Contacto</a>
+      </li>
+      
+
+      <li  *ngIf="!auth.isLoggedIn()" class="nav-item">
+        <a class="nav-link"routerLink="/login">Login</a>
+      </li>
+      
+
+      <li  *ngIf="!auth.isLoggedIn()" class="nav-item">
+        <a class="nav-link" routerLink="/register" >Register</a>
+      </li>
+
+    
+
+      </ul>
+      
+      <div *ngIf="auth.isLoggedIn()" class="my-2 my-lg-0">
+        <a (click)="cerrarSesion()" class="nav-link"><mat-icon>exit_to_app</mat-icon>Cerrar Sesión</a>
+      </div>
+     
+  
+</div>
+</nav>
+
+
+<mat-sidenav-container *ngIf="auth.isLoggedIn()">
+  <mat-sidenav #sideNav [(opened)]="opened" mode="side">
+
+    <mat-nav-list>
+      <a mat-list-item>
+        <mat-icon></mat-icon>
+      </a>
+    </mat-nav-list>
+    
+    <mat-nav-list>
+      <a mat-list-item routerLink="/profile">
+        <mat-icon class="icono">account_circle</mat-icon>Profile
+      </a>
+    </mat-nav-list>
+
+    <mat-divider></mat-divider>
+
+    <mat-nav-list>
+      <a mat-list-item routerLink="/admin">
+        <mat-icon class="icono">Admin</mat-icon>Admin
+      </a>
+    </mat-nav-list>
+
+    <mat-divider></mat-divider>    
+
+    <mat-nav-list>
+      <a mat-list-item routerLink="/home">
+        <mat-icon class="icono">home</mat-icon>Home
+      </a>
+    </mat-nav-list>
+
+    <mat-divider></mat-divider>  
+    
+    <mat-nav-list>
+      <a mat-list-item routerLink="/addOrder">
+        <mat-icon class="icono">Registrar Pedido</mat-icon>Registrar Pedido
+      </a>
+    </mat-nav-list>
+
+    <mat-divider></mat-divider>  
+
+    <mat-nav-list>
+      <a mat-list-item routerLink="/addProvider">
+        <mat-icon class="icono">playlist_add</mat-icon>Crear proveedor
+      </a>
+    </mat-nav-list>
+
+    <mat-divider></mat-divider>
+
+
+    <mat-nav-list>
+      <a mat-list-item routerLink="/listProvider">
+        <mat-icon class="icono">list_alt</mat-icon>Listar proveedor
+      </a>
+    </mat-nav-list>
+
+    <mat-nav-list>
+      <a mat-list-item routerLink="/addProduct">
+        <mat-icon class="icono">playlist_add</mat-icon>Crear producto
+      </a>
+    </mat-nav-list>
+
+    <mat-divider></mat-divider>
+
+
+    <mat-nav-list>
+      <a mat-list-item routerLink="/listProduct">
+        <mat-icon class="icono">list_alt</mat-icon>Listar producto
+      </a>
+    </mat-nav-list>
+
+    <mat-nav-list>
+      <a mat-list-item routerLink="/category">
+        <mat-icon class="icono">list_alt</mat-icon>Categoria
+      </a>
+    </mat-nav-list>
+
+    <mat-divider></mat-divider>
+
+  </mat-sidenav>
+  <mat-sidenav-content>
+    
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+
